@@ -8,9 +8,8 @@ public class ExceptionHandling {
 			System.out.println(5 % 0);
 			System.out.println("exception handling");
 			} 
-		catch (Exception e) {
-			System.out.println(e.getLocalizedMessage());
-			System.out.println("error occuring");
+		catch (ArithmeticException e) {
+			throw  new NullPointerException();
 		}
 	}
 

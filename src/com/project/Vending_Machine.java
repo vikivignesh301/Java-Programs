@@ -41,7 +41,7 @@ public class Vending_Machine {
 		Scanner s = new Scanner(System.in);
 		int tray_no = s.nextInt();
 
-		if (tray_no <= 6) {
+		if ((tray_no <= 6)&&(tray_no != 0)) {
 			if (tray_no == 1) {
 				System.out.println(m.get(tray_no) + " Price is Rs." + m1.get(tray_no));
 			} else if (tray_no == 2) {
@@ -68,46 +68,51 @@ public class Vending_Machine {
 			if (proceed_payment.equalsIgnoreCase("Y")) {
 				System.out.println("Enter The Denomination");
 				int denomination = s.nextInt();
-				System.out.println("Enter The No Of Note");
-				int no_of_note = s.nextInt();
-				int price = denomination * no_of_note;
-				if (price != m1.get(tray_no)) {
-					System.out.println("Enter The Denomination");
-					int denomination1 = s.nextInt();
+				if (denomination == 1 || denomination == 5 || denomination == 10 || denomination == 100) {
 					System.out.println("Enter The No Of Note");
-					int no_of_note1 = s.nextInt();
-					price1 = denomination1 * no_of_note1;
-				}
-				System.out.println("Comfirm Payment : Y/N");
-				String confirm_denomination = s.next();
-				if (confirm_denomination.equalsIgnoreCase("Y")) {
-					int total_price = price + price1;
-					if (total_price == m1.get(tray_no)) {
-						System.out.println("Item Is Dispensing");
-						Integer value = m2.get(tray_no);
-						m2.put(tray_no, value - 1);
-
-					} else {
-						System.err.println("Entered Denomination Does Not Match");
+					int no_of_note = s.nextInt();
+					int price = denomination * no_of_note;
+					if (price != m1.get(tray_no)) {
+						System.out.println("Enter The Denomination");
+						int denomination1 = s.nextInt();
+						System.out.println("Enter The No Of Note");
+						int no_of_note1 = s.nextInt();
+						price1 = denomination1 * no_of_note1;
 					}
-				} else {
+					System.out.println("Comfirm Payment : Y/N");
+					String confirm_denomination = s.next();
+					if (confirm_denomination.equalsIgnoreCase("Y")) {
+						int total_price = price + price1;
+						if (total_price == m1.get(tray_no)) {
+							System.out.println("Item Is Dispensing");
+							Integer value = m2.get(tray_no);
+							m2.put(tray_no, value - 1);
+
+						} else {
+							System.err.println("Product Price Does Not Match");
+						}
+					} else {
+						System.err.println("Transaction Cancelled");
+						System.err.println("Thank You For Showing Intrest On US");
+					}
+				}else {
+					System.err.println("Wrong Denomination");
+				}
+
+				} else if (proceed_payment.equalsIgnoreCase("N")) {
 					System.err.println("Transaction Cancelled");
 					System.err.println("Thank You For Showing Intrest On US");
 				}
+				Set<Entry<Integer, Integer>> product_count = m2.entrySet();
+				System.out.println("Balance Count Of Product");
+				for (Entry<Integer, Integer> entry : product_count) {
+					System.out.println(entry);
+				}
 
-			} else if (proceed_payment.equalsIgnoreCase("N")) {
-				System.err.println("Transaction Cancelled");
-				System.err.println("Thank You For Showing Intrest On US");
-			}
-			Set<Entry<Integer, Integer>> product_count = m2.entrySet();
-			for (Entry<Integer, Integer> entry : product_count) {
-				System.out.println(entry);
+			} else {
+				System.err.println("Tray No Is Out Of Bound");
 			}
 
-		} else {
-			System.err.println("Tray No Is Out Of Bound");
 		}
-
-	}
-
+	
 }

@@ -11,8 +11,8 @@ public class Repetative_Number_Array {
 	public static void main(String[] args) {
 
 		int a[] = { 1, 2, 3, 4, 2, 3, 6 };
-		TreeMap<Integer, Integer> m = new TreeMap<>();
-		TreeMap<Integer, Integer> m1= new TreeMap<>();
+		Map<Integer, Integer> m = new TreeMap<>();
+		Map<Integer, Integer> m1= new TreeMap<>();
 
 		for (int i : a) {
 			if (m.containsKey(i)) {

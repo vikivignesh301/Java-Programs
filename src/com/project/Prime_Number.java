@@ -4,16 +4,16 @@ public class Prime_Number {
 
 	public static void main(String[] args) {
 
-		int n = 10;
-		float f = 0.0f;
+		int n = 6;
+		boolean flag = true;
 
 		for (int i = 2; i < n; i++) {
 
 			if (n % i == 0) {
-				f = 0.1f;
+				flag = false;
 			}
 		}
-		if (f == 0.0f) {
+		if (flag == true) {
 			System.out.println("prime number");
 		} else {
 			System.out.println("not prime number");

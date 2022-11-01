@@ -11,6 +11,6 @@ public class Factorial {
 			
 			sum=sum*i;
 		}
-		System.out.println("the factorial of "+n+"is "+sum);
+		System.out.println("the factorial of "+n+" is "+sum);
 	}
 }
