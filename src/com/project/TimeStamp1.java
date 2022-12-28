@@ -15,4 +15,5 @@ public class TimeStamp1 {
 		System.out.println(s.format(d));
 	
 	}
+	
 }
